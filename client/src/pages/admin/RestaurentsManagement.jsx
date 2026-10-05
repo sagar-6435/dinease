@@ -21,7 +21,7 @@ export default function RestaurantsManagement() {
 
   const fetchRestaurants = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/admin/restaurants');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/restaurants`);
       const data = await res.json();
       if (data.success) {
         setRestaurants(data.data.restaurants);
@@ -39,7 +39,7 @@ export default function RestaurantsManagement() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/admin/restaurants', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/restaurants`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

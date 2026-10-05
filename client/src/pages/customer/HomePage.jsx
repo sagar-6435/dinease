@@ -1,8 +1,12 @@
 import React from 'react';
 import { Search, ShoppingBag, Star, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-export default function HomePage() {
+export default function HomePage({ forcedSlug }) {
+  const { slug: paramSlug } = useParams();
+  const activeSlug = forcedSlug || paramSlug;
+  // We can now use activeSlug to fetch specific restaurant data!
+
   const categories = ['Starters', 'Main Course', 'Biryani', 'Desserts', 'Beverages'];
   const menuItems = [
     { id: 1, name: 'Chicken Dum Biryani', price: 299, type: 'non-veg', img: 'https://placehold.co/200x200/orange/white?text=Biryani', desc: 'Aromatic basmati rice layered with marinated chicken, cooked to perfection.' },
