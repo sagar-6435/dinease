@@ -9,11 +9,14 @@ import TablesManagement from './pages/restaurant/TablesManagement';
 import AdminLayout from './pages/admin/AdminLayout';
 import AdsManagement from './pages/admin/Adsmanagement';
 import RestaurantsManagement from './pages/admin/RestaurentsManagement';
+import RestaurantLayout from './pages/restaurant/Layout';
+import MenuManagement from './pages/restaurant/MenuManagement';
 import About from './pages/About';
 
 function App() {
   const hostname = window.location.hostname;
   let subdomain = null;
+
 
   // Detect if we are on a custom subdomain like "test.dinease.in"
   if (hostname.includes('dinease.in') && hostname !== 'dinease.in' && hostname !== 'www.dinease.in') {
@@ -56,7 +59,11 @@ function App() {
         <Route path="/kitchen/orders" element={<KitchenOrders />} />
         
         {/* Restaurant Routes */}
-        <Route path="/restaurant/tables" element={<TablesManagement />} />
+        <Route path="/restaurant" element={<RestaurantLayout />}>
+          <Route index element={<div className="p-6 font-bold text-xl text-gray-800">Restaurant Dashboard</div>} />
+          <Route path="menu" element={<MenuManagement />} />
+          <Route path="tables" element={<TablesManagement />} />
+        </Route>
         
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>

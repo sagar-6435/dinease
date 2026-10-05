@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const restaurantRoutes = require('./routes/restaurantRoutes');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/api', limiter);
 // Mount Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/restaurant', restaurantRoutes);
 
 // Routes
 app.get('/health', (req, res) => {
